@@ -45,7 +45,7 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public List<BankDto> getAll() {
-        return bankRepository.findAll()
+        return bankRepository.findAllBanks()
                 .stream()
                 .map(bankMapper::toDto)
                 .toList();
