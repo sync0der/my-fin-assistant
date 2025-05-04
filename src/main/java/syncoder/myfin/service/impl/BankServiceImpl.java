@@ -64,10 +64,9 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public BankDto setExchangeRate(Long id, ExchangeRates exchangeRates) {
+    public BankDto setExchangeRate(Long id, List<ExchangeRates> exchangeRates) {
         Bank bank = get(id);
         bank.setExchangeRates(exchangeRates);
-
         return bankMapper.toDto(bankRepository.save(bank));
     }
 

@@ -16,5 +16,5 @@ public class BankDto {
     private String email;
     private List<String> supportPhoneNumbers;
     private String website;
-    private ExchangeRates exchangeRates;
+    private List<ExchangeRates> exchangeRates;
 }

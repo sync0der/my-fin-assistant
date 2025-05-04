@@ -33,6 +33,6 @@ public class Bank {
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Loan> microloans;
 
-    @Embedded
-    private ExchangeRates exchangeRates;
+    @ElementCollection
+    private List<ExchangeRates> exchangeRates;
 }

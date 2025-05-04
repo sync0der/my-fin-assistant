@@ -8,6 +8,8 @@ import syncoder.myfin.dto.BankDto;
 import syncoder.myfin.entity.ExchangeRates;
 import syncoder.myfin.service.BankService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("bank")
 @RequiredArgsConstructor
@@ -37,7 +39,7 @@ public class BankController {
 
 
     @PostMapping("/{id}/set-exchange-rate")
-    public ResponseEntity<?> setExchangeRate(@PathVariable Long id, @RequestBody ExchangeRates exchangeRates){
+    public ResponseEntity<?> setExchangeRate(@PathVariable Long id, @RequestBody List<ExchangeRates> exchangeRates){
         return ResponseEntity.ok(bankService.setExchangeRate(id, exchangeRates));
     }
 
