@@ -6,6 +6,7 @@ import lombok.*;
 import syncoder.myfin.entity.enums.CardType;
 
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -24,6 +25,6 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Card> cards;
+    private Set<Card> cards;
 
 }

@@ -2,9 +2,8 @@ package syncoder.myfin.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import syncoder.myfin.entity.Card;
+import syncoder.myfin.entity.Expenses;
 
 @Repository
-public interface CardRepository extends JpaRepository<Card, String> {
-    Card findById(Long id);
+public interface ExpensesRepository extends JpaRepository<Expenses, Long> {
 }

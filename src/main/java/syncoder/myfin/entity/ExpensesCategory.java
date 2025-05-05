@@ -16,6 +16,7 @@ public class ExpensesCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     private double totalAmount;
