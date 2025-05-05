@@ -1,5 +1,6 @@
 package syncoder.myfin.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,7 +37,7 @@ public class BankServiceImpl implements BankService {
         bank.setImage(s3Service.uploadFile(file));
         bankRepository.save(bank);
 
-        return bankMapper.toDto(bank);
+        return bankMapper.toDto(bankRepository.findBankById(id));
     }
 
     @Override
