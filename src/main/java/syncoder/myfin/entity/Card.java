@@ -26,11 +26,5 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Card(Long id, CardType cardType, String cardNumber) {
-        this.id = id;
-        this.cardType = cardType;
-        this.cardNumber = cardNumber;
-    }
 }
 

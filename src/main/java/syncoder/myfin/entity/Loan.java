@@ -2,8 +2,6 @@ package syncoder.myfin.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import syncoder.myfin.entity.enums.LoanType;
-import syncoder.myfin.entity.enums.MicroloanApplicationMethod;
 
 import java.util.List;
 
@@ -19,11 +17,10 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LoanType type;
+    private String type;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Bank bank;
 

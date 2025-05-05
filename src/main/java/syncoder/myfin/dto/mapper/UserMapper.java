@@ -27,19 +27,4 @@ public class UserMapper implements MapperInterface<User, UserDto> {
                 .build();
     }
 
-    @Override
-    public User toEntity(UserDto dto) {
-        if (dto == null) return null;
-        User user = User.builder()
-                .id(dto.getId())
-                .firstName(dto.getFirstName())
-                .lastName(dto.getLastName())
-                .cards(dto.getCards().stream()
-                        .map(cardDto -> new Card(cardDto.getId(), cardDto.getCardType(), cardDto.getCardNumber())) // This now works
-                        .collect(Collectors.toList()))
-                .build();
-        user.getCards().forEach(card -> card.setUser(user));
-
-        return user;
-    }
 }

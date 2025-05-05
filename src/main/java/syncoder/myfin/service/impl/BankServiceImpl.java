@@ -39,9 +39,11 @@ public class BankServiceImpl implements BankService {
         return bankMapper.toDto(bank);
     }
 
-    private Bank get(Long id) {
+    @Override
+    public Bank get(Long id) {
         return bankRepository.findById(id).orElseThrow(RuntimeException::new);
     }
+
 
     @Override
     public List<BankDto> getAll() {
