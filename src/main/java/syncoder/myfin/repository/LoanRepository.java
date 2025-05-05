@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long> {
-    @EntityGraph(attributePaths = {"bank"})
+    @EntityGraph(attributePaths = {"bank", "requiredDocuments"})
     List<Loan> findAllByType(String type);
 
     @EntityGraph(attributePaths = {"bank"})
