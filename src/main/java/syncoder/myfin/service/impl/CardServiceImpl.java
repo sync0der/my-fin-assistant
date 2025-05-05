@@ -9,6 +9,7 @@ import syncoder.myfin.dto.mapper.CardMapper;
 import syncoder.myfin.entity.Card;
 import syncoder.myfin.repository.CardRepository;
 import syncoder.myfin.service.CardService;
+import syncoder.myfin.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,17 +19,16 @@ import java.util.Optional;
 public class CardServiceImpl implements CardService {
     private final CardRepository cardRepository;
     private final CardMapper cardMapper;
+    private final UserService userService;
 
-    @Transactional
     @Override
-    public CardDto createCard(CardDto cardDto) {
+    public CardDto createCard(Long userId, CardDto cardDto) {
         Card entity = cardMapper.toEntity(cardDto);
+        entity.setUser(userService.getUser(userId));
         Card savedCard = cardRepository.save(entity);
         return cardMapper.toDto(savedCard);
-
     }
 
-    @Transactional
     @Override
     public CardDto updateCard(CardDto cardDto) {
         Card entity = cardMapper.toEntity(cardDto);
@@ -40,7 +40,6 @@ public class CardServiceImpl implements CardService {
 
     }
 
-    @Transactional
     @Override
     public void deleteCard(CardDto cardDto) {
         cardRepository.delete(cardMapper.toEntity(cardDto));

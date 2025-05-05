@@ -22,7 +22,6 @@ public class CardMapper implements MapperInterface<Card, CardDto> {
     @Override
     public Card toEntity(CardDto cardDto) {
         return Card.builder()
-                .id(cardDto.getId())
                 .cardType(cardDto.getCardType())
                 .cardNumber(cardDto.getCardNumber())
                 .build();

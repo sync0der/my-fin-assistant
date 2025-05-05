@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import syncoder.myfin.entity.enums.CardType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -26,5 +29,8 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Expenses> expenses = new ArrayList<>();
 }
 
