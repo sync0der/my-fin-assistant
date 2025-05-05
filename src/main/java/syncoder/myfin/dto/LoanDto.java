@@ -13,7 +13,7 @@ import java.util.List;
 public class LoanDto {
     private Long id;
     private String type;
-    private BankDto bankDto;
+    private BankDto bank;
     private String loanName;
     private List<String> applicationMethod;
     private String currency;
