@@ -19,4 +19,6 @@ public interface BankService {
     BankDto update(Long id, BankDto updateDto);
 
     BankDto setExchangeRate(Long id, List<ExchangeRates> exchangeRates);
+
+    void delete(Long id);
 }

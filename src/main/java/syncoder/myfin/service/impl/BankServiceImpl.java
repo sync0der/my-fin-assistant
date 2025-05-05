@@ -73,9 +73,15 @@ public class BankServiceImpl implements BankService {
         return bankMapper.toDto(bankRepository.save(bank));
     }
 
+    @Override
+    public void delete(Long id) {
+        bankRepository.deleteById(id);
+    }
+
     private <T> void updateIfNotNull(T newValue, Consumer<T> setter) {
         if (newValue != null) {
             setter.accept(newValue);
         }
     }
+
 }

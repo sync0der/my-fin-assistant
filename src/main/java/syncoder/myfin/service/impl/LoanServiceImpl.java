@@ -11,6 +11,7 @@ import syncoder.myfin.service.BankService;
 import syncoder.myfin.service.LoanService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,6 +53,36 @@ public class LoanServiceImpl implements LoanService {
                 .stream()
                 .map(loanMapper::toBasicDto)
                 .toList();
+    }
+
+    @Override
+    public void delete(Long id) {
+        loanRepository.deleteById(id);
+    }
+
+    @Override
+    public LoanDto update(Long id, LoanDto loanDto) {
+        Optional<Loan> optionalLoan = loanRepository.findById(id);
+        if (optionalLoan.isEmpty()) {
+            throw new RuntimeException("Loan with ID " + id + " not found");
+        }
+        Loan loan = optionalLoan.get();
+        loan.setLoanName(loanDto.getLoanName());
+        loan.setApplicationMethod(loanDto.getApplicationMethod());
+        loan.setCurrency(loanDto.getCurrency());
+        loan.setLoanTerm(loanDto.getLoanTerm());
+        loan.setLoanSum(loanDto.getLoanSum());
+        loan.setInterestRate(loanDto.getInterestRate());
+        loan.setHasDownPayment(loanDto.isHasDownPayment());
+        loan.setCollateral(loanDto.getCollateral());
+        loan.setRequiredDocuments(loanDto.getRequiredDocs());
+        loan.setType(loanDto.getType());
+        Loan updatedLoan = loanRepository.save(loan);
+        return loanMapper.toDto(updatedLoan);
+
+
+
+
     }
 
 

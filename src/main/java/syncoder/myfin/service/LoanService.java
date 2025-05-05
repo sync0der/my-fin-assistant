@@ -11,4 +11,6 @@ public interface LoanService {
     List<LoanDto> getAll();
 
     List<LoanDto> getByLoanType(String loanType);
+    void delete(Long id);
+    LoanDto update(Long id, LoanDto loanDto);
 }
