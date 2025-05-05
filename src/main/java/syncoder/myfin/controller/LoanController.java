@@ -24,7 +24,7 @@ public class LoanController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<?> add(@RequestParam(name = "type") String type) {
+    public ResponseEntity<?> get(@RequestParam(name = "type") String type) {
         return ResponseEntity.ok(loanService.getByLoanType(type));
     }
 }

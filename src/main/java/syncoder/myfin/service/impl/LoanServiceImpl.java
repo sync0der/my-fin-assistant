@@ -50,7 +50,7 @@ public class LoanServiceImpl implements LoanService {
     public List<LoanDto> getByLoanType(String loanType) {
         return loanRepository.findAllByType(loanType)
                 .stream()
-                .map(loanMapper::toBasicDto)
+                .map(loanMapper::toDto)
                 .toList();
     }
 
