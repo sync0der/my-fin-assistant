@@ -14,6 +14,7 @@ public class ExpensesMapper implements MapperInterface<Expenses, ExpensesDto> {
     @Override
     public ExpensesDto toDto(Expenses expenses) {
         ExpensesDto dto = ExpensesDto.builder()
+                .type(expenses.getType())
                 .amount(expenses.getAmount())
                 .receiverName(expenses.getReceiverName())
                 .receiverCardNumber(expenses.getReceiverCardNumber())
@@ -28,6 +29,7 @@ public class ExpensesMapper implements MapperInterface<Expenses, ExpensesDto> {
     @Override
     public Expenses toEntity(ExpensesDto expensesDto) {
         return Expenses.builder()
+                .type(expensesDto.getType())
                 .amount(expensesDto.getAmount())
                 .category(expensesCategoryService.find(expensesDto.getCategoryName()))
                 .build();

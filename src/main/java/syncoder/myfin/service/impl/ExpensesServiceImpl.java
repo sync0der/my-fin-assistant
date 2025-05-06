@@ -37,6 +37,7 @@ public class ExpensesServiceImpl implements ExpensesService {
         cardRepository.save(card);
 
         Expenses expenses = Expenses.builder()
+                .type(requestDto.getType())
                 .amount(requestDto.getAmount())
                 .category(category)
                 .card(card)
@@ -56,6 +57,7 @@ public class ExpensesServiceImpl implements ExpensesService {
     @Override
     public ExpensesDto paymentToCard(ContactPaymentRequestDto requestDto) {
         Expenses expenses = Expenses.builder()
+                .type("OUTCOME")
                 .card(cardRepository.findById(1L))
                 .receiverName(requestDto.getReceiverName())
                 .receiverPhoneNumber(requestDto.getPhoneNumber())

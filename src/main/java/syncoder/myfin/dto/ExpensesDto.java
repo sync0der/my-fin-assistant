@@ -8,6 +8,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class ExpensesDto {
+    private String type;
     private double amount;
     private String categoryName;
     private String receiverCardNumber;
