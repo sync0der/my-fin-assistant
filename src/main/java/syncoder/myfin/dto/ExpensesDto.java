@@ -10,4 +10,7 @@ import lombok.Data;
 public class ExpensesDto {
     private double amount;
     private String categoryName;
+    private String receiverCardNumber;
+    private String receiverName;
+    private String receiverPhoneNumber;
 }

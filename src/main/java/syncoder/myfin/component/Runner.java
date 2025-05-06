@@ -6,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import syncoder.myfin.dto.ExpensesDto;
 import syncoder.myfin.entity.Card;
-import syncoder.myfin.entity.Expenses;
 import syncoder.myfin.entity.User;
 import syncoder.myfin.entity.enums.CardType;
 import syncoder.myfin.repository.*;
@@ -64,16 +63,28 @@ public class Runner implements CommandLineRunner {
         }
 
         if (expensesRepository.findAll().isEmpty()) {
-            expensesService.add(new ExpensesDto(256000, "Oziq-ovqat"));
-            expensesService.add(new ExpensesDto(25000, "Transport"));
-            expensesService.add(new ExpensesDto(84000, "O'yin-kulgi va dam olish"));
-            expensesService.add(new ExpensesDto(45000, "Uy-joy"));
+            expensesService.paymentFromCashCard(ExpensesDto.builder()
+                    .amount(256000)
+                    .categoryName("Oziq-ovqat")
+                    .build());
+            expensesService.paymentFromCashCard(ExpensesDto.builder()
+                    .amount(25000)
+                    .categoryName("Transport")
+                    .build());
+            expensesService.paymentFromCashCard(ExpensesDto.builder()
+                    .amount(84000)
+                    .categoryName("O'yin-kulgi va dam olish")
+                    .build());
+            expensesService.paymentFromCashCard(ExpensesDto.builder()
+                    .amount(45000)
+                    .categoryName("Uy-joy")
+                    .build());
 
         }
     }
 
-    private void initializeData(){
-        if (bankRepository.findAll().isEmpty()){
+    private void initializeData() {
+        if (bankRepository.findAll().isEmpty()) {
 
         }
     }

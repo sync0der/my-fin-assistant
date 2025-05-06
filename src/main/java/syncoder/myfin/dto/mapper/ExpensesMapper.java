@@ -13,10 +13,16 @@ public class ExpensesMapper implements MapperInterface<Expenses, ExpensesDto> {
 
     @Override
     public ExpensesDto toDto(Expenses expenses) {
-        return ExpensesDto.builder()
+        ExpensesDto dto = ExpensesDto.builder()
                 .amount(expenses.getAmount())
-                .categoryName(expenses.getCategory().getName())
+                .receiverName(expenses.getReceiverName())
+                .receiverCardNumber(expenses.getReceiverCardNumber())
+                .receiverPhoneNumber(expenses.getReceiverPhoneNumber())
                 .build();
+        if (expenses.getCategory() != null) {
+            dto.setCategoryName(expenses.getCategory().getName());
+        }
+        return dto;
     }
 
     @Override

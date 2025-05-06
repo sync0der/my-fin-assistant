@@ -18,6 +18,10 @@ public class Expenses {
 
     private double amount;
 
+    private String receiverCardNumber;
+    private String receiverName;
+    private String receiverPhoneNumber;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ExpensesCategory category;
