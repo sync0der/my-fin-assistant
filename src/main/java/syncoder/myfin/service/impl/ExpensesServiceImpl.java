@@ -77,8 +77,4 @@ public class ExpensesServiceImpl implements ExpensesService {
         expensesCategory.setTotalAmount(amount);
         expensesCategoryRepository.save(expensesCategory);
     }
-
-
-
-
 }
